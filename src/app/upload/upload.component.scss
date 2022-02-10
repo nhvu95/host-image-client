@@ -1,0 +1,255 @@
+#upload {
+  width: 480px;
+  background-color: #3c424b;
+  min-height: 150px;
+  border-radius: 6px;
+  margin: auto;
+  .option-area {
+    width: 100%;
+    position: relative;
+    // height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .option-filePicker {
+      height: 40px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .option-extra button:hover,
+    .option-filePicker:hover,
+    .option-textPicker input:hover {
+      opacity: 0.75;
+    }
+    .option-extra button,
+    .option-filePicker,
+    .option-textPicker input {
+      transition: opacity 0.3s, border 0.5s;
+    }
+    .option-divider--line {
+      width: 40px;
+      height: 1px;
+      margin: 0 16px;
+      background-color: #fff;
+      opacity: 0.12;
+    }
+    .option-divider {
+      height: 10px;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .option-textPicker {
+      height: 36px;
+      width: 320px;
+      margin-bottom: 20px;
+      input {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        text-align: center;
+        background-color: #272a33;
+        border: unset;
+        outline: unset;
+        font-family: Proxima Nova Bold, Helvetica Neue, Helvetica, Arial,
+          sans-serif;
+        border: 1px solid rgba(200, 191, 255, 0);
+      }
+    }
+    .option-extra button,
+    .option-filePicker,
+    .option-textPicker input {
+      transition: opacity 0.3s, border 0.5s;
+    }
+
+    * {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .server-hovered {
+      font-weight: 700;
+      color: #ffca41;
+    }
+    table {
+      th,
+      td {
+        margin: 5px;
+        min-width: 100px;
+        ::ng-deep tui-input-number, ::ng-deep tui-input-number tui-primitive-textfield {
+          width: 100%;
+        }
+      }
+      th:nth-child(3),
+      th:nth-child(4),
+      td:nth-child(3),
+      td:nth-child(4) {
+        min-width: 85px;
+        max-width: 85px;
+      }
+      ::ng-deep tui-toggle tui-wrapper[data-appearance="primary"] {
+        background-color: orange !important;
+      }
+      tui-svg,
+      img {
+        display: block;
+        width: 50px;
+        height: 50px;
+      }
+      tui-svg {
+        filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+      }
+      th {
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+    .server-table {
+      display: table;
+      tr td {
+        min-width: 120px;
+      }
+    }
+  }
+  .option-area.imgur-server {
+    // height: 362px;
+  }
+  .generate-link-wrapper{
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+  }
+  #generate-link-btn {
+    // margin-top: 10px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+      rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    ::ng-deep tui-wrapper[data-appearance="custom"] {
+      background: orange;
+      color: #fff;
+
+      &[data-state="hovered"] {
+        background: rgb(250, 187, 70);
+      }
+
+      &[data-state="pressed"] {
+        background: orange;
+      }
+
+      &[data-state="disabled"] {
+        background: rgb(255, 211, 128);
+      }
+    }
+  }
+  .drop-area {
+    width: 100%;
+    position: relative;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .PopUpClose {
+      position: absolute;
+      top: -35px;
+      right: -35px;
+      width: 88px;
+      height: 88px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      outline: none;
+      z-index: 6;
+    }
+    .dark {
+      background: radial-gradient(
+          755px at 77.71% -37.81%,
+          #441b6f 0,
+          rgba(23, 23, 66, 0) 100%
+        ),
+        transparent;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .sky {
+      background-color: #ffca41;
+    }
+    .mountain {
+      bottom: 0;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+    }
+    .sky {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top-left-radius: 6px;
+    }
+    .day-light {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 208px;
+      height: 118px;
+      opacity: 1;
+      background-size: cover;
+      z-index: 4;
+      background-image: url(https://s.imgur.com/desktop-assets/desktop-assets/daylight.cb1d53bdf2e1cbe03245a626650ed63d.svg);
+    }
+    .drop-content,
+    .drop-indicator {
+      position: relative;
+      justify-content: center;
+    }
+    .drop-content {
+      display: grid;
+      grid-template-rows: repeat(1fr, 100px);
+      width: 300px;
+      z-index: 2;
+    }
+    .drop-indicator {
+      display: flex;
+      width: 264px;
+      margin: 0 auto;
+      height: 72px;
+      align-items: center;
+      border: 3px dashed hsla(0, 0%, 100%, 0.4);
+      border-radius: 6px;
+      line-height: 40px;
+      vertical-align: middle;
+      mix-blend-mode: overlay;
+    }
+    .drop-indicator-dragging {
+      border: 3px dashed hsla(32, 100%, 50%, 0.4);
+    }
+    .drop-content,
+    .drop-indicator {
+      position: relative;
+      justify-content: center;
+    }
+    .drop-label {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #fff;
+      cursor: default;
+    }
+  }
+}

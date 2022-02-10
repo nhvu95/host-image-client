@@ -1,0 +1,135 @@
+<div
+  id="upload"
+  (drop)="dropHandler($event)"
+  (dragover)="dragOverHandler($event)"
+  (dragleave)="dragLeaveHandler($event)"
+>
+  <div class="drop-area">
+    <button type="button" aria-label="close" class="PopUpClose">
+      <img
+        src="https://s.imgur.com/desktop-assets/desktop-assets/upload_dialog_close.a910cf045da9c85b3de5ba520f62b2d3.svg"
+      />
+    </button>
+    <div class="drop-content" style="opacity: 1">
+      <div
+        class="drop-indicator"
+        [ngClass]="onDraging ? 'drop-indicator-dragging' : ''"
+      ></div>
+      <div class="drop-label">Drop images here</div>
+    </div>
+    <div class="dark"></div>
+    <div class="sky"></div>
+    <div class="day-light"></div>
+    <img class="mountain" src="assets/observatory.svg" />
+  </div>
+  <div *ngIf="viewImage" class="show-img-area"></div>
+  <div class="option-area" [ngClass]="imgurServer ? 'imgur-server' : ''">
+    <label for="file-input" class="option-filePicker"
+      ><img
+        src="https://s.imgur.com/desktop-assets/desktop-assets/icon-photo.1ded6245836b46ed24022036f33a84e8.svg"
+        class=""
+      />Choose Photo/Video</label
+    >
+    <div class="option-divider">
+      <span class="option-divider--line"></span>or<span
+        class="option-divider--line"
+      ></span>
+    </div>
+    <div class="option-textPicker">
+      <input placeholder="Link of your image" tabindex="12" />
+    </div>
+    <div>
+      <table class="server-table">
+        <tr>
+          <td>
+            <label [ngClass]="imgurServer ? 'server-hovered' : ''"
+              >Use Imgur Server</label
+            >
+          </td>
+          <td>
+            <tui-toggle
+              [(ngModel)]="imgurServer"
+              [showIcons]="true"
+              size="l"
+              (ngModelChange)="onChangeServer($event)"
+            >
+            </tui-toggle>
+          </td>
+          <td>
+            <label [ngClass]="!imgurServer ? 'server-hovered' : ''"
+              >Use My Server</label
+            >
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div [formGroup]="linkForm">
+      <table style="display: table">
+        <tr>
+          <td>
+            <tui-svg src="assets/w.svg" class="icon"></tui-svg>
+          </td>
+          <td>
+            <tui-svg src="assets/h.svg" class="icon"></tui-svg>
+          </td>
+          <td>
+            <tui-svg src="assets/ratio.svg" class="icon"></tui-svg>
+          </td>
+          <td>
+            <tui-svg src="assets/lazy.svg" class="icon"></tui-svg>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <tui-input-number
+              tuiTextfieldSize="s"
+              formControlName="width"
+              [postfix]="'px'"
+              [max]="5000"
+              [tuiTextfieldCleaner]="true"
+              [tuiTextfieldInputMode]="'numeric'"
+            >
+            </tui-input-number>
+          </td>
+          <td>
+            <tui-input-number
+              tuiTextfieldSize="s"
+              formControlName="height"
+              [postfix]="'px'"
+              [max]="5000"
+              [tuiTextfieldCleaner]="true"
+              [tuiTextfieldInputMode]="'numeric'"
+            >
+            </tui-input-number>
+          </td>
+          <td>
+            <tui-toggle formControlName="ratio" size="m"> </tui-toggle>
+          </td>
+          <td>
+            <tui-toggle formControlName="lazyLoad" size="m"> </tui-toggle>
+          </td>
+        </tr>
+        <tr>
+          <th>Width</th>
+          <th>Height</th>
+          <th>Keep ratio</th>
+          <th>Lazy load</th>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="imgurServer" class="generate-link-wrapper">
+      <button
+        id="generate-link-btn"
+        tuiButton
+        type="button"
+        [appearance]="'custom'"
+        [showLoader]="onGenerating"
+        [shape]="'rounded'"
+        [size]="'s'"
+        (click)="generateLink($event)"
+      >
+        Create link
+      </button>
+    </div>
+  </div>
+</div>
